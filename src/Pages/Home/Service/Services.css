@@ -1,0 +1,12 @@
+.service {
+    padding: 10px;
+    border-radius: 10px;
+    padding-bottom: 10px;
+    text-align: center;
+    background-color: rgb(65, 122, 226);
+    color: aliceblue;
+}
+
+.service img {
+    border-radius: 10px;
+}
