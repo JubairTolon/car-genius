@@ -3,9 +3,6 @@ import { Link, useNavigate } from 'react-router-dom';
 import './Register.css'
 
 const Register = () => {
-    const emailRef = useRef('');
-    const passRef = useRef('');
-    const nameRef = useRef('');
     const navigate = useNavigate();
 
     const navigateLogin = () => {
@@ -14,9 +11,10 @@ const Register = () => {
 
     const handleRegister = event => {
         event.preventDefault();
-        const email = emailRef.current.value;
-        const pass = passRef.current.value;
-        const name = nameRef.current.value;
+        const name = event.target.name.value;
+        const email = event.target.email.value;
+        const pass = event.target.password.value;
+
     }
 
     return (

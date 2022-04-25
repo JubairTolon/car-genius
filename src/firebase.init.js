@@ -1,7 +1,7 @@
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
 import { getAnalytics } from "firebase/analytics";
-import { getAuth } from 'firebase/auth';
+import { getAuth } from 'firebase/auth'
 
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
@@ -9,13 +9,13 @@ import { getAuth } from 'firebase/auth';
 // Your web app's Firebase configuration
 // For Firebase JS SDK v7.20.0 and later, measurementId is optional
 const firebaseConfig = {
-    apiKey: "AIzaSyCqyAZTHeq4iEYmMzCEeJLjXGURx4gd00Y",
-    authDomain: "geniusccarservices.firebaseapp.com",
-    projectId: "geniusccarservices",
-    storageBucket: "geniusccarservices.appspot.com",
-    messagingSenderId: "792368927083",
-    appId: "1:792368927083:web:ef6504ede291020b26bc2e",
-    measurementId: "G-2P8RWXE7Q9"
+    apiKey: process.env.REATC_APP_apiKey,
+    authDomain: process.env.REATC_APP_authDomain,
+    projectId: process.env.REATC_APP_projectId,
+    storageBucket: process.env.REATC_APP_storageBucket,
+    messagingSenderId: process.env.REATC_APP_messagingSenderId,
+    appId: process.env.REATC_APP_appId,
+    measurementId: process.env.REATC_APP_measurementId,
 };
 
 // Initialize Firebase
