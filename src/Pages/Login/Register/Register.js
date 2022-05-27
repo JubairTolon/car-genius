@@ -52,6 +52,7 @@ const Register = () => {
                 <input type="email" name='email' placeholder=' Enter your email' required />
 
                 <input type="password" name='password' placeholder='Password' required />
+
                 <input onClick={() => setAgree(!agree)} type="checkbox" name='terms' id='terms' />
                 {/* <label className={agree ? 'ps-2 text-primary' : 'ps-2 text-danger'} htmlFor="">Accept terms and condition</label> */}
                 <label className={`ps-2 ${agree ? '' : 'text-danger'}`} htmlFor="">Accept terms and condition</label>
