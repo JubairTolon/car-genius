@@ -6,6 +6,7 @@ import SocialLogin from '../SocialLogin/SocialLogin';
 import { useState } from 'react';
 import { async } from '@firebase/util';
 import Loading from '../../Shared/Loading/loading';
+import useToken from '../../../hooks/useToken';
 
 
 const Register = () => {
@@ -17,6 +18,7 @@ const Register = () => {
         error,
     ] = useCreateUserWithEmailAndPassword(auth, { sendEmailVerification: true });
     const [updateProfile, updating, updateError] = useUpdateProfile(auth);
+    const [token] = useToken(user)
     const navigate = useNavigate();
 
     const navigateLogin = () => {
@@ -27,9 +29,10 @@ const Register = () => {
         return <Loading></Loading>;
     }
 
-    if (user) {
-        console.log('user:', user);
+    if (token) {
+        navigate('/home');
     }
+
 
     const handleRegister = async (event) => {
         event.preventDefault();
@@ -39,8 +42,7 @@ const Register = () => {
         // const agree = event.target.terms.checked;
         await createUserWithEmailAndPassword(email, pass, name);
         await updateProfile({ displayName: name });
-        console.log('Updated profile');
-        navigate('/home')
+        // navigate('/home')
     }
 
     return (

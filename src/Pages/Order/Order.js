@@ -13,8 +13,8 @@ const Order = () => {
     const [orders, setOrders] = useState([]);
     useEffect(() => {
         const getOrders = async () => {
-            const email = user.email;
-            const url = `http://localhost:5000/order?email=${email}`;
+            const email = user?.email;
+            const url = `https://afternoon-river-68895.herokuapp.com/order?email=${email}`;
             try {
                 const { data } = await axiosPrivate.get(url);
                 setOrders(data);

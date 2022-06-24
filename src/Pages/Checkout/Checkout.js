@@ -32,7 +32,7 @@ const Checkout = () => {
             address: event.target.value,
             phone: event.target.value
         }
-        axios.post('http://localhost:5000/order', order)
+        axios.post('https://afternoon-river-68895.herokuapp.com/order', order)
             .then(response => {
                 const { data } = response;
                 if (data.insertedId) {
