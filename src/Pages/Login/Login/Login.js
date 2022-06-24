@@ -7,9 +7,10 @@ import auth from '../../../firebase.init';
 import SocialLogin from '../SocialLogin/SocialLogin';
 import { async } from '@firebase/util';
 import Loading from '../../Shared/Loading/loading';
-import { ToastContainer, toast } from 'react-toastify';
+import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import PageTitle from '../../Shared/PageTitle/PageTitle';
+import axios from 'axios';
 
 const Login = () => {
     const emailRef = useRef('');
@@ -17,9 +18,9 @@ const Login = () => {
     const navigate = useNavigate();
     const location = useLocation();
 
-    let errorElement;
-
     let from = location.state?.from?.pathname || "/";
+
+    let errorElement;
 
     const [
         signInWithEmailAndPassword,
@@ -40,14 +41,18 @@ const Login = () => {
     }
 
     if (user) {
-        navigate(from, { replace: true });
+        // navigate(from, { replace: true });
     }
 
-    const handleSubmit = event => {
+    const handleSubmit = async event => {
         event.preventDefault();
         const email = emailRef.current.value;
         const pass = passRef.current.value;
-        signInWithEmailAndPassword(email, pass);
+
+        await signInWithEmailAndPassword(email, pass);
+        const { data } = await axios.post('http://localhost:5000/login', { email });
+        localStorage.setItem('accessToken', data.accessToken);
+        navigate(from, { replace: true });
     }
     const navigaterRegister = event => {
         navigate('/register')
@@ -84,7 +89,7 @@ const Login = () => {
             <p>New to Genius Car?  <Link to={'/register'} className='text-primary text-decoration-none pe-auto' onClick={navigaterRegister}>Please Register</Link></p>
             <p>Forget password <button className='btn btn-link text-primary text-decoration-none pe-auto' onClick={resetPassword}>Reset password</button></p>
             <SocialLogin></SocialLogin>
-            <ToastContainer />
+
         </div>
     );
 };
